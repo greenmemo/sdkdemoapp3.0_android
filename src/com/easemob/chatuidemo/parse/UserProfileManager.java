@@ -77,7 +77,7 @@ public class UserProfileManager {
 				isSyncingContactInfosWithServer = false;
 				// in case that logout already before server returns,we should
 				// return immediately
-				if (!EMClient.getInstance().isLoggedIn()) {
+				if (!EMClient.getInstance().isLoggedInBefore()) {
 					return;
 				}
 				if (callback != null) {
