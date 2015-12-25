@@ -36,7 +36,7 @@ import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMConversation;
 import com.easemob.chat.EMConversation.EMConversationType;
 import com.easemob.chat.EMMessage;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.utils.EaseCommonUtils;
 import com.easemob.util.EMLog;
 import com.hyphenate.chatuidemo.Constant;

@@ -29,7 +29,7 @@ import android.widget.Toast;
 import com.easemob.EMCallBack;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.utils.EaseCommonUtils;
 import com.hyphenate.chatuidemo.DemoApplication;
 import com.hyphenate.chatuidemo.DemoHelper;

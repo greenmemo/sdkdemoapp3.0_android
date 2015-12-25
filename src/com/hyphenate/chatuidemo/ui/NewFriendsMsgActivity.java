@@ -19,7 +19,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.adapter.NewFriendsMsgAdapter;
 import com.hyphenate.chatuidemo.db.InviteMessgeDao;
 import com.hyphenate.chatuidemo.domain.InviteMessage;

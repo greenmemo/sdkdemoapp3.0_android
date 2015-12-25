@@ -31,7 +31,7 @@ import android.widget.Toast;
 import com.easemob.EMCallBack;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMChatOptions;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.widget.EaseSwitchButton;
 import com.hyphenate.chatuidemo.Constant;
 import com.hyphenate.chatuidemo.DemoHelper;

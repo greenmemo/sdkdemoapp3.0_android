@@ -32,7 +32,7 @@ import android.widget.Toast;
 
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.db.InviteMessgeDao;
 import com.hyphenate.chatuidemo.domain.InviteMessage;
 import com.hyphenate.chatuidemo.domain.InviteMessage.InviteMesageStatus;

@@ -39,7 +39,7 @@ import android.widget.TextView;
 import com.easemob.EMValueCallBack;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMContact;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.exceptions.EaseMobException;
 import com.hyphenate.chatuidemo.DemoHelper;
 import com.hyphenate.chatuidemo.db.UserDao;

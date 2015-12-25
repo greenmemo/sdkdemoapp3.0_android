@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.easemob.EMValueCallBack;
 import com.easemob.chat.EMChatManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.domain.EaseUser;
 import com.easemob.easeui.utils.EaseUserUtils;
 import com.hyphenate.chatuidemo.DemoHelper;

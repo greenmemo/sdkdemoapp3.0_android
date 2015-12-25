@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.DemoHelper;
 
 /**

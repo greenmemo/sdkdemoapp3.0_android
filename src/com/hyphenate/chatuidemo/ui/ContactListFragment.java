@@ -27,7 +27,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 
 import com.easemob.chat.EMContactManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.domain.EaseUser;
 import com.easemob.easeui.ui.EaseContactListFragment;
 import com.easemob.util.EMLog;

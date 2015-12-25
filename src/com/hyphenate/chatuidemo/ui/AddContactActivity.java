@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMContactManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.widget.EaseAlertDialog;
 import com.hyphenate.chatuidemo.DemoHelper;
 

@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 
 public class ExitGroupDialog extends BaseActivity{
     private TextView text;

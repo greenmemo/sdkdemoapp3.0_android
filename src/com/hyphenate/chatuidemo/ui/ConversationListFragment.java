@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMConversation;
 import com.easemob.chat.EMConversation.EMConversationType;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.ui.EaseConversationListFragment;
 import com.easemob.util.NetUtils;
 import com.hyphenate.chatuidemo.Constant;

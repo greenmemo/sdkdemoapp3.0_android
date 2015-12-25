@@ -16,7 +16,7 @@ package com.hyphenate.chatuidemo.ui;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.domain.EaseUser;
 import com.easemob.easeui.widget.EaseAlertDialog;
 import com.easemob.easeui.widget.EaseAlertDialog.AlertDialogUser;

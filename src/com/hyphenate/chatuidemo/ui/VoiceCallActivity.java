@@ -37,7 +37,7 @@ import android.widget.Toast;
 
 import com.easemob.chat.EMCallStateChangeListener;
 import com.easemob.chat.EMChatManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.exceptions.EMServiceNotReadyException;
 import com.hyphenate.chatuidemo.DemoHelper;
 

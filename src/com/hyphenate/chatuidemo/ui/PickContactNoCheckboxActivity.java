@@ -28,7 +28,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.adapter.EaseContactAdapter;
 import com.easemob.easeui.domain.EaseUser;
 import com.easemob.easeui.widget.EaseSidebar;

@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.exceptions.EaseMobException;
 
 public class GroupBlacklistActivity extends BaseActivity {

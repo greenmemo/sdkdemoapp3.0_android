@@ -1,7 +1,7 @@
 package com.hyphenate.chatuidemo.ui;
 
 import com.easemob.chat.EMChatManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;

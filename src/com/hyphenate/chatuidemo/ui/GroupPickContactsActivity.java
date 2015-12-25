@@ -35,7 +35,7 @@ import android.widget.TextView;
 
 import com.easemob.chat.EMGroup;
 import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.adapter.EaseContactAdapter;
 import com.easemob.easeui.domain.EaseUser;
 import com.easemob.easeui.widget.EaseSidebar;

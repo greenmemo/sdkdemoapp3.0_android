@@ -40,7 +40,7 @@ import android.widget.Toast;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroup;
 import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.ui.EaseGroupRemoveListener;
 import com.easemob.easeui.utils.EaseUserUtils;
 import com.easemob.easeui.widget.EaseAlertDialog;

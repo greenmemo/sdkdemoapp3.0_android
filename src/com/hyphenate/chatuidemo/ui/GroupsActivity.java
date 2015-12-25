@@ -36,7 +36,7 @@ import android.widget.Toast;
 import com.easemob.EMValueCallBack;
 import com.easemob.chat.EMGroup;
 import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.util.EMLog;
 import com.hyphenate.chatuidemo.Constant;
 import com.hyphenate.chatuidemo.adapter.GroupAdapter;

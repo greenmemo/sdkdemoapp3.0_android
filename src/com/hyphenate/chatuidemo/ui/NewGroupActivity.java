@@ -27,7 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.widget.EaseAlertDialog;
 import com.easemob.exceptions.EaseMobException;
 

@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easemob.chat.EMContactManager;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.easemob.easeui.utils.EaseUserUtils;
 import com.easemob.exceptions.EaseMobException;
 

@@ -10,7 +10,7 @@ import com.easemob.chat.EMCallStateChangeListener;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMMessage;
 import com.easemob.chat.TextMessageBody;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.Constant;
 
 public class CallActivity extends BaseActivity {

@@ -30,7 +30,7 @@ import android.widget.ListView;
 
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMChatRoom;
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 import com.hyphenate.chatuidemo.Constant;
 import com.hyphenate.chatuidemo.adapter.ChatRoomAdapter;
 
