@@ -1,7 +1,6 @@
 package com.hyphenate.chatuidemo.ui;
 
-import com.hyphenate.chat.EMCallStateChangeListener;
-import com.hyphenate.chat.EMChatManager;
+import com.hyphenate.EMCallManagerListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMMessage.Status;
@@ -26,7 +25,7 @@ public class CallActivity extends BaseActivity {
     protected SoundPool soundPool;
     protected Ringtone ringtone;
     protected int outgoing;
-    protected EMCallStateChangeListener callStateListener;
+    protected EMCallManagerListener callStateListener;
     
     
     @Override
@@ -46,7 +45,7 @@ public class CallActivity extends BaseActivity {
         audioManager.setMicrophoneMute(false);
         
         if(callStateListener != null)
-            EMClient.getInstance().callManager().removeCallStateChangeListener(callStateListener);
+            EMClient.getInstance().callManager().removeListener(callStateListener);
             
     }
     
