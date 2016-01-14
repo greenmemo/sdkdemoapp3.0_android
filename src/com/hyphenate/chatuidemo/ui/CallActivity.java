@@ -1,20 +1,33 @@
 package com.hyphenate.chatuidemo.ui;
 
-import com.hyphenate.EMCallManagerListener;
+import com.hyphenate.chat.EMCallStateChangeListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMMessage.Status;
 import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.chatuidemo.Constant;
 import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.ui.CallActivity.CallingState;
+import com.hyphenate.exceptions.EMServiceNotReadyException;
 
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.view.SurfaceView;
+import android.widget.Toast;
 
 public class CallActivity extends BaseActivity {
+    protected final int MSG_CALL_MAKE_VIDEO = 0;
+    protected final int MSG_CALL_MAKE_VOICE = 1;
+    protected final int MSG_CALL_ANSWER = 2;
+    protected final int MSG_CALL_REJECT = 3;
+    protected final int MSG_CALL_END = 4;
+    protected final int MSG_CALL_RLEASE_HANDLER = 5;
 
     protected boolean isInComingCall;
     protected String username;
@@ -25,8 +38,11 @@ public class CallActivity extends BaseActivity {
     protected SoundPool soundPool;
     protected Ringtone ringtone;
     protected int outgoing;
-    protected EMCallManagerListener callStateListener;
-    
+    protected EMCallStateChangeListener callStateListener;
+    protected SurfaceView localSurface;
+    protected SurfaceView oppositeSurface;
+    protected boolean isAnswered = false;
+    protected int streamID = -1;
     
     @Override
     protected void onCreate(Bundle arg0) {
@@ -36,7 +52,6 @@ public class CallActivity extends BaseActivity {
     
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         if (soundPool != null)
             soundPool.release();
         if (ringtone != null && ringtone.isPlaying())
@@ -45,8 +60,101 @@ public class CallActivity extends BaseActivity {
         audioManager.setMicrophoneMute(false);
         
         if(callStateListener != null)
-            EMClient.getInstance().callManager().removeListener(callStateListener);
-            
+            EMClient.getInstance().callManager().removeCallStateChangeListener(callStateListener);
+        releaseHandler();
+        super.onDestroy();
+    }
+    
+    @Override
+    public void onBackPressed() {
+        handler.sendEmptyMessage(MSG_CALL_END);
+        saveCallRecord(0);
+        finish();
+        super.onBackPressed();
+    }
+    
+
+    HandlerThread callHandlerThread = new HandlerThread("callHandlerThread");
+    protected Handler handler = new Handler(callHandlerThread.getLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+            case MSG_CALL_MAKE_VIDEO:
+            case MSG_CALL_MAKE_VOICE:
+                try {
+                    streamID = playMakeCallSounds();
+                    if (msg.what == MSG_CALL_MAKE_VIDEO) {
+                        EMClient.getInstance().callManager().makeVideoCall(username, localSurface, oppositeSurface);
+                    } else { 
+                        EMClient.getInstance().callManager().makeVoiceCall(username);
+                    }
+                } catch (EMServiceNotReadyException e) {
+                    e.printStackTrace();
+                    final String st2 = getResources().getString(R.string.Is_not_yet_connected_to_the_server);
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(CallActivity.this, st2, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                break;
+            case MSG_CALL_ANSWER:
+                if (ringtone != null)
+                    ringtone.stop();
+                if (isInComingCall) {
+                    try {
+                        EMClient.getInstance().callManager().answerCall();
+                        isAnswered = true;
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                        saveCallRecord(0);
+                        finish();
+                        return;
+                    }
+                }
+                closeSpeakerOn();
+                break;
+            case MSG_CALL_REJECT:
+                if (ringtone != null)
+                    ringtone.stop();
+                try {
+                    EMClient.getInstance().callManager().rejectCall();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                    saveCallRecord(0);
+                    finish();
+                }
+                callingState = CallingState.REFUESD;
+                break;
+            case MSG_CALL_END:
+                if (soundPool != null)
+                    soundPool.stop(streamID);
+                try {
+                    EMClient.getInstance().callManager().endCall();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    saveCallRecord(0);
+                    finish();
+                }
+                break;
+            case MSG_CALL_RLEASE_HANDLER:
+                EMClient.getInstance().callManager().endCall();
+                handler.removeMessages(MSG_CALL_MAKE_VIDEO);
+                handler.removeMessages(MSG_CALL_MAKE_VOICE);
+                handler.removeMessages(MSG_CALL_ANSWER);
+                handler.removeMessages(MSG_CALL_REJECT);
+                handler.removeMessages(MSG_CALL_END);
+                callHandlerThread.quit();
+                break;
+            default:
+                break;
+            }
+        }
+    };
+    
+    void releaseHandler() {
+        handler.sendEmptyMessage(MSG_CALL_RLEASE_HANDLER);
     }
     
     /**
