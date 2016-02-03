@@ -7,8 +7,9 @@ import com.hyphenate.chat.EMMessage.Status;
 import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.chatuidemo.Constant;
 import com.hyphenate.chatuidemo.R;
-import com.hyphenate.chatuidemo.ui.CallActivity.CallingState;
 import com.hyphenate.exceptions.EMServiceNotReadyException;
+import com.hyphenate.media.EMLocalSurfaceView;
+import com.hyphenate.media.EMOppositeSurfaceView;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -18,7 +19,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.view.SurfaceView;
 import android.widget.Toast;
 
 public class CallActivity extends BaseActivity {
@@ -39,8 +39,8 @@ public class CallActivity extends BaseActivity {
     protected Ringtone ringtone;
     protected int outgoing;
     protected EMCallStateChangeListener callStateListener;
-    protected SurfaceView localSurface;
-    protected SurfaceView oppositeSurface;
+    protected EMLocalSurfaceView localSurface;
+    protected EMOppositeSurfaceView oppositeSurface;
     protected boolean isAnswered = false;
     protected int streamID = -1;
     

@@ -20,6 +20,8 @@ import com.hyphenate.chat.EMCallStateChangeListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chatuidemo.DemoHelper;
 import com.hyphenate.chatuidemo.R;
+import com.hyphenate.media.EMLocalSurfaceView;
+import com.hyphenate.media.EMOppositeSurfaceView;
 
 import android.media.AudioManager;
 import android.media.RingtoneManager;
@@ -28,7 +30,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -116,12 +117,12 @@ public class VideoCallActivity extends CallActivity implements OnClickListener {
         nickTextView.setText(username);
 
         // 显示本地图像的surfaceview
-        localSurface = (SurfaceView) findViewById(R.id.local_surface);
+        localSurface = (EMLocalSurfaceView) findViewById(R.id.local_surface);
         localSurface.setZOrderMediaOverlay(true);
         localSurface.setZOrderOnTop(true);
 
         // 显示对方图像的surfaceview
-        oppositeSurface = (SurfaceView) findViewById(R.id.opposite_surface);
+        oppositeSurface = (EMOppositeSurfaceView) findViewById(R.id.opposite_surface);
 
         // 设置通话监听
         addCallStateListener();
