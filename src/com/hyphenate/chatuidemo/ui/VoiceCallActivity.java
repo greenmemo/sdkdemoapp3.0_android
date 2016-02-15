@@ -145,10 +145,8 @@ public class VoiceCallActivity extends CallActivity implements OnClickListener {
                         
                         @Override
                         public void run() {
-                            // TODO Auto-generated method stub
                             callStateTextView.setText(st1);
                         }
-
                     });
                     break;
                 case CONNECTED: // 双方已经建立连接
@@ -156,11 +154,9 @@ public class VoiceCallActivity extends CallActivity implements OnClickListener {
 
                         @Override
                         public void run() {
-                            // TODO Auto-generated method stub
                             String st3 = getResources().getString(R.string.have_connected_with);
                             callStateTextView.setText(st3);
                         }
-
                     });
                     break;
 
@@ -187,7 +183,6 @@ public class VoiceCallActivity extends CallActivity implements OnClickListener {
                             callStateTextView.setText(str4);
                             callingState = CallingState.NORMAL;
                         }
-
                     });
                     break;
                 case DISCONNNECTED: // 电话断了
@@ -204,7 +199,6 @@ public class VoiceCallActivity extends CallActivity implements OnClickListener {
                                     findViewById(R.id.root_layout).startAnimation(animation);
                                     finish();
                                 }
-
                             }, 200);
                         }
 

@@ -75,6 +75,7 @@ public class CallActivity extends BaseActivity {
     
 
     HandlerThread callHandlerThread = new HandlerThread("callHandlerThread");
+    { callHandlerThread.start(); }
     protected Handler handler = new Handler(callHandlerThread.getLooper()) {
         @Override
         public void handleMessage(Message msg) {
