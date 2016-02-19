@@ -15,13 +15,13 @@ package com.hyphenate.chatuidemo.ui;
 
 import java.util.UUID;
 
+import com.easemob.media.EMLocalSurfaceView;
+import com.easemob.media.EMOppositeSurfaceView;
 import com.hyphenate.chat.EMCallManager.EMVideoCallHelper;
 import com.hyphenate.chat.EMCallStateChangeListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chatuidemo.DemoHelper;
 import com.hyphenate.chatuidemo.R;
-import com.hyphenate.media.EMLocalSurfaceView;
-import com.hyphenate.media.EMOppositeSurfaceView;
 
 import android.media.AudioManager;
 import android.media.RingtoneManager;
@@ -52,7 +52,6 @@ public class VideoCallActivity extends CallActivity implements OnClickListener {
 
     private TextView callStateTextView;
 
-    private Handler handler = new Handler();
     private LinearLayout comingBtnContainer;
     private Button refuseBtn;
     private Button answerBtn;
@@ -67,6 +66,8 @@ public class VideoCallActivity extends CallActivity implements OnClickListener {
     private LinearLayout topContainer;
     private LinearLayout bottomContainer;
     private TextView monitorTextView;
+    
+    private Handler uiHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +83,8 @@ public class VideoCallActivity extends CallActivity implements OnClickListener {
                 WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
                         | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
                         | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+
+        uiHandler = new Handler();
 
         callStateTextView = (TextView) findViewById(R.id.tv_call_state);
         comingBtnContainer = (LinearLayout) findViewById(R.id.ll_coming_call);
@@ -143,6 +146,7 @@ public class VideoCallActivity extends CallActivity implements OnClickListener {
             audioManager.setSpeakerphoneOn(true);
             ringtone = RingtoneManager.getRingtone(this, ringUri);
             ringtone.play();
+            EMClient.getInstance().callManager().setSurfaceView(localSurface, oppositeSurface);
         }
     }
 
@@ -209,7 +213,7 @@ public class VideoCallActivity extends CallActivity implements OnClickListener {
                     final CallError fError = error;
                     runOnUiThread(new Runnable() {
                         private void postDelayedCloseMsg() {
-                            handler.postDelayed(new Runnable() {
+                            uiHandler.postDelayed(new Runnable() {
 
                                 @Override
                                 public void run() {

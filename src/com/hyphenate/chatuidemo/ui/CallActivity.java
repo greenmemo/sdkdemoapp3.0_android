@@ -1,5 +1,7 @@
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.media.EMLocalSurfaceView;
+import com.easemob.media.EMOppositeSurfaceView;
 import com.hyphenate.chat.EMCallStateChangeListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
@@ -8,8 +10,6 @@ import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.chatuidemo.Constant;
 import com.hyphenate.chatuidemo.R;
 import com.hyphenate.exceptions.EMServiceNotReadyException;
-import com.hyphenate.media.EMLocalSurfaceView;
-import com.hyphenate.media.EMOppositeSurfaceView;
 
 import android.content.Context;
 import android.media.AudioManager;

@@ -21,6 +21,7 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.chatuidemo.DemoHelper;
 import com.hyphenate.chatuidemo.R;
 import com.hyphenate.exceptions.EMServiceNotReadyException;
+import com.hyphenate.util.EMLog;
 
 import android.media.AudioManager;
 import android.media.RingtoneManager;
@@ -138,6 +139,7 @@ public class VoiceCallActivity extends CallActivity implements OnClickListener {
             @Override
             public void onCallStateChanged(CallState callState, CallError error) {
                 // Message msg = handler.obtainMessage();
+                EMLog.d("EMCallManager", "onCallStateChanged:" + callState);
                 switch (callState) {
                 
                 case CONNECTING: // 正在连接对方
@@ -193,11 +195,16 @@ public class VoiceCallActivity extends CallActivity implements OnClickListener {
 
                                 @Override
                                 public void run() {
-                                    saveCallRecord(0);
-                                    Animation animation = new AlphaAnimation(1.0f, 0.0f);
-                                    animation.setDuration(800);
-                                    findViewById(R.id.root_layout).startAnimation(animation);
-                                    finish();
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            saveCallRecord(0);
+                                            Animation animation = new AlphaAnimation(1.0f, 0.0f);
+                                            animation.setDuration(800);
+                                            findViewById(R.id.root_layout).startAnimation(animation);
+                                            finish();
+                                        }
+                                    });
                                 }
                             }, 200);
                         }
