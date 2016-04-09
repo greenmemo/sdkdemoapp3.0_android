@@ -8,6 +8,7 @@ import com.hyphenate.chat.EMMessage.Status;
 import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.chatuidemo.Constant;
 import com.hyphenate.chatuidemo.R;
+import com.hyphenate.exceptions.EMNoActiveCallException;
 import com.hyphenate.exceptions.EMServiceNotReadyException;
 import com.hyphenate.media.EMLocalSurfaceView;
 import com.hyphenate.media.EMOppositeSurfaceView;
@@ -170,7 +171,11 @@ public class CallActivity extends BaseActivity {
                 }
                 break;
             case MSG_CALL_RLEASE_HANDLER:
-                EMClient.getInstance().callManager().endCall();
+                try {
+                    EMClient.getInstance().callManager().endCall();
+                } catch (EMNoActiveCallException e) {
+                    e.printStackTrace();
+                }
                 handler.removeCallbacks(timeoutHangup);
                 handler.removeMessages(MSG_CALL_MAKE_VIDEO);
                 handler.removeMessages(MSG_CALL_MAKE_VOICE);
