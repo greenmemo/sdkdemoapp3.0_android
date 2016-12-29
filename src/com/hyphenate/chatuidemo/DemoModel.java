@@ -6,7 +6,7 @@ import java.util.Map;
 
 import android.content.Context;
 
-import com.easemob.easeui.domain.EaseUser;
+import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.chatuidemo.db.UserDao;
 import com.hyphenate.chatuidemo.domain.RobotUser;
 import com.hyphenate.chatuidemo.utils.PreferenceManager;

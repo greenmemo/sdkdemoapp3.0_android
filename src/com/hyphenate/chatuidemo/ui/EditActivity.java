@@ -1,6 +1,6 @@
 package com.hyphenate.chatuidemo.ui;
 
-import com.easemob.chatuidemo.R;
+import com.hyphenate.chatuidemo.R;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -15,6 +15,9 @@ package com.hyphenate.chatuidemo.adapter;
 
 import java.util.List;
 
+import com.easemob.chat.EMChatRoom;
+import com.hyphenate.chatuidemo.R;
+
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,9 +30,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.easemob.chat.EMChatRoom;
-import com.easemob.chatuidemo.R;
 
 public class ChatRoomAdapter extends ArrayAdapter<EMChatRoom> {
 

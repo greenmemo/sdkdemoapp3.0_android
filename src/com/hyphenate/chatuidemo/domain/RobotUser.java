@@ -13,7 +13,7 @@
  */
 package com.hyphenate.chatuidemo.domain;
 
-import com.easemob.easeui.domain.EaseUser;
+import com.hyphenate.easeui.domain.EaseUser;
 
 public class RobotUser extends EaseUser{
 	public RobotUser(String username) {

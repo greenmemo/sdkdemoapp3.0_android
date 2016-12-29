@@ -2,10 +2,10 @@ package com.hyphenate.chatuidemo.domain;
 
 import java.util.Arrays;
 
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.domain.EaseEmojicon;
-import com.easemob.easeui.domain.EaseEmojicon.Type;
-import com.easemob.easeui.domain.EaseEmojiconGroupEntity;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.easeui.domain.EaseEmojicon;
+import com.hyphenate.easeui.domain.EaseEmojicon.Type;
+import com.hyphenate.easeui.domain.EaseEmojiconGroupEntity;
 
 public class EmojiconExampleGroupData {
     

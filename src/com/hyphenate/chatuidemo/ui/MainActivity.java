@@ -13,6 +13,24 @@
  */
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.EMCallBack;
+import com.easemob.EMEventListener;
+import com.easemob.EMNotifierEvent;
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMConversation;
+import com.easemob.chat.EMConversation.EMConversationType;
+import com.easemob.chat.EMMessage;
+import com.easemob.util.EMLog;
+import com.hyphenate.chatuidemo.Constant;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.db.InviteMessgeDao;
+import com.hyphenate.chatuidemo.db.UserDao;
+import com.hyphenate.chatuidemo.domain.InviteMessage;
+import com.hyphenate.easeui.utils.EaseCommonUtils;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.update.UmengUpdateAgent;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -28,24 +46,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.easemob.EMCallBack;
-import com.easemob.EMEventListener;
-import com.easemob.EMNotifierEvent;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMConversation;
-import com.easemob.chat.EMConversation.EMConversationType;
-import com.easemob.chat.EMMessage;
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.utils.EaseCommonUtils;
-import com.easemob.util.EMLog;
-import com.hyphenate.chatuidemo.Constant;
-import com.hyphenate.chatuidemo.DemoHelper;
-import com.hyphenate.chatuidemo.db.InviteMessgeDao;
-import com.hyphenate.chatuidemo.db.UserDao;
-import com.hyphenate.chatuidemo.domain.InviteMessage;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.update.UmengUpdateAgent;
 
 public class MainActivity extends BaseActivity implements EMEventListener {
 

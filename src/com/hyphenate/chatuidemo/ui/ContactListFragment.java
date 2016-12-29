@@ -13,6 +13,17 @@
  */
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.chat.EMContactManager;
+import com.easemob.util.EMLog;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.DemoHelper.DataSyncListener;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.db.InviteMessgeDao;
+import com.hyphenate.chatuidemo.db.UserDao;
+import com.hyphenate.chatuidemo.widget.ContactItemView;
+import com.hyphenate.easeui.domain.EaseUser;
+import com.hyphenate.easeui.ui.EaseContactListFragment;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.ContextMenu;
@@ -25,18 +36,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
-
-import com.easemob.chat.EMContactManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.domain.EaseUser;
-import com.easemob.easeui.ui.EaseContactListFragment;
-import com.easemob.util.EMLog;
-import com.hyphenate.chatuidemo.DemoHelper;
-import com.hyphenate.chatuidemo.DemoHelper.DataSyncListener;
-import com.hyphenate.chatuidemo.db.DemoDBManager;
-import com.hyphenate.chatuidemo.db.InviteMessgeDao;
-import com.hyphenate.chatuidemo.db.UserDao;
-import com.hyphenate.chatuidemo.widget.ContactItemView;
 
 /**
  * 联系人列表页

@@ -3,6 +3,17 @@ package com.hyphenate.chatuidemo.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.easemob.util.DateUtils;
+import com.easemob.util.EMLog;
+import com.easemob.util.TextFormater;
+import com.hyphenate.chatuidemo.BuildConfig;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.domain.VideoEntity;
+import com.hyphenate.chatuidemo.video.util.ImageCache;
+import com.hyphenate.chatuidemo.video.util.ImageResizer;
+import com.hyphenate.chatuidemo.video.util.Utils;
+import com.hyphenate.chatuidemo.widget.RecyclingImageView;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -29,17 +40,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.chatuidemo.BuildConfig;
-import com.easemob.chatuidemo.R;
-import com.easemob.util.DateUtils;
-import com.easemob.util.EMLog;
-import com.easemob.util.TextFormater;
-import com.hyphenate.chatuidemo.domain.VideoEntity;
-import com.hyphenate.chatuidemo.video.util.ImageCache;
-import com.hyphenate.chatuidemo.video.util.ImageResizer;
-import com.hyphenate.chatuidemo.video.util.Utils;
-import com.hyphenate.chatuidemo.widget.RecyclingImageView;
 
 public class ImageGridFragment extends Fragment implements OnItemClickListener {
 

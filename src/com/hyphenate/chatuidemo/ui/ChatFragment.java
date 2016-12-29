@@ -4,6 +4,25 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Map;
 
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMGroup;
+import com.easemob.chat.EMGroupManager;
+import com.easemob.chat.EMMessage;
+import com.easemob.chat.TextMessageBody;
+import com.easemob.util.PathUtil;
+import com.hyphenate.chatuidemo.Constant;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.domain.EmojiconExampleGroupData;
+import com.hyphenate.chatuidemo.domain.RobotUser;
+import com.hyphenate.chatuidemo.widget.ChatRowVoiceCall;
+import com.hyphenate.easeui.EaseConstant;
+import com.hyphenate.easeui.ui.EaseChatFragment;
+import com.hyphenate.easeui.ui.EaseChatFragment.EaseChatFragmentListener;
+import com.hyphenate.easeui.widget.chatrow.EaseChatRow;
+import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
+import com.hyphenate.easeui.widget.emojicon.EaseEmojiconMenu;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,25 +36,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
-
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMGroup;
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chat.EMMessage;
-import com.easemob.chat.TextMessageBody;
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.EaseConstant;
-import com.easemob.easeui.ui.EaseChatFragment;
-import com.easemob.easeui.ui.EaseChatFragment.EaseChatFragmentListener;
-import com.easemob.easeui.widget.chatrow.EaseChatRow;
-import com.easemob.easeui.widget.chatrow.EaseCustomChatRowProvider;
-import com.easemob.easeui.widget.emojicon.EaseEmojiconMenu;
-import com.easemob.util.PathUtil;
-import com.hyphenate.chatuidemo.Constant;
-import com.hyphenate.chatuidemo.DemoHelper;
-import com.hyphenate.chatuidemo.domain.EmojiconExampleGroupData;
-import com.hyphenate.chatuidemo.domain.RobotUser;
-import com.hyphenate.chatuidemo.widget.ChatRowVoiceCall;
 
 public class ChatFragment extends EaseChatFragment implements EaseChatFragmentListener{
 

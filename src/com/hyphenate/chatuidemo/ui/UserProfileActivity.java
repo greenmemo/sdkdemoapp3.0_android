@@ -2,6 +2,14 @@ package com.hyphenate.chatuidemo.ui;
 
 import java.io.ByteArrayOutputStream;
 
+import com.bumptech.glide.Glide;
+import com.easemob.EMValueCallBack;
+import com.easemob.chat.EMChatManager;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.easeui.domain.EaseUser;
+import com.hyphenate.easeui.utils.EaseUserUtils;
+
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
@@ -21,14 +29,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.easemob.EMValueCallBack;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.domain.EaseUser;
-import com.easemob.easeui.utils.EaseUserUtils;
-import com.hyphenate.chatuidemo.DemoHelper;
 
 public class UserProfileActivity extends BaseActivity implements OnClickListener{
 	

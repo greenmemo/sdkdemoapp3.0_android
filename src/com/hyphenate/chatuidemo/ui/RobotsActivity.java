@@ -18,6 +18,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.easemob.EMValueCallBack;
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMContact;
+import com.easemob.exceptions.EaseMobException;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.db.UserDao;
+import com.hyphenate.chatuidemo.domain.RobotUser;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,15 +44,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.easemob.EMValueCallBack;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMContact;
-import com.easemob.chatuidemo.R;
-import com.easemob.exceptions.EaseMobException;
-import com.hyphenate.chatuidemo.DemoHelper;
-import com.hyphenate.chatuidemo.db.UserDao;
-import com.hyphenate.chatuidemo.domain.RobotUser;
 
 public class RobotsActivity extends BaseActivity {
 

@@ -1,10 +1,10 @@
 package com.hyphenate.chatuidemo.ui;
 
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.easeui.ui.EaseChatFragment;
+
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.ui.EaseChatFragment;
 
 /**
  * 聊天页面，需要fragment的使用{@link #EaseChatFragment}

@@ -12,7 +12,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
-import com.easemob.easeui.domain.EaseUser;
+import com.hyphenate.easeui.domain.EaseUser;
 import com.easemob.util.HanziToPinyin;
 import com.hyphenate.chatuidemo.Constant;
 import com.hyphenate.chatuidemo.DemoApplication;

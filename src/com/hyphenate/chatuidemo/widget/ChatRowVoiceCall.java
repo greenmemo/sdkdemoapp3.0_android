@@ -1,16 +1,15 @@
 package com.hyphenate.chatuidemo.widget;
 
+import com.easemob.chat.EMMessage;
+import com.easemob.chat.TextMessageBody;
+import com.hyphenate.chatuidemo.Constant;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.easeui.widget.chatrow.EaseChatRow;
+
 import android.content.Context;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.easemob.chat.EMMessage;
-import com.easemob.chat.TextMessageBody;
-import com.easemob.easeui.EaseConstant;
-import com.easemob.easeui.R;
-import com.easemob.easeui.widget.chatrow.EaseChatRow;
-import com.hyphenate.chatuidemo.Constant;
 
 public class ChatRowVoiceCall extends EaseChatRow{
 

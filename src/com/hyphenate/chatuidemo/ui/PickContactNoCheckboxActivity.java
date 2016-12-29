@@ -21,19 +21,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.hyphenate.chatuidemo.Constant;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.easeui.adapter.EaseContactAdapter;
+import com.hyphenate.easeui.domain.EaseUser;
+import com.hyphenate.easeui.widget.EaseSidebar;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.adapter.EaseContactAdapter;
-import com.easemob.easeui.domain.EaseUser;
-import com.easemob.easeui.widget.EaseSidebar;
-import com.hyphenate.chatuidemo.Constant;
-import com.hyphenate.chatuidemo.DemoHelper;
 
 public class PickContactNoCheckboxActivity extends BaseActivity {
 

@@ -1,5 +1,10 @@
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMGroupManager;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.R;
+
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -8,11 +13,6 @@ import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
-import com.hyphenate.chatuidemo.DemoHelper;
 
 /**
  * 开屏页

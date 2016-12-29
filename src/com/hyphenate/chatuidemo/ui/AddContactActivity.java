@@ -13,6 +13,12 @@
  */
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMContactManager;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.easeui.widget.EaseAlertDialog;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -25,12 +31,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMContactManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.widget.EaseAlertDialog;
-import com.hyphenate.chatuidemo.DemoHelper;
 
 public class AddContactActivity extends BaseActivity{
 	private EditText editText;

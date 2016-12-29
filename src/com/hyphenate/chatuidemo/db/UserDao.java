@@ -18,7 +18,7 @@ import java.util.Map;
 
 import android.content.Context;
 
-import com.easemob.easeui.domain.EaseUser;
+import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.chatuidemo.domain.RobotUser;
 
 public class UserDao {

@@ -1,5 +1,7 @@
 package com.hyphenate.chatuidemo.widget;
 
+import com.hyphenate.chatuidemo.R;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -9,8 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.easemob.chatuidemo.R;
 
 public class ContactItemView extends LinearLayout{
 

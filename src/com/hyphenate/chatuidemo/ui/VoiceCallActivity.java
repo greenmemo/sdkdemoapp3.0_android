@@ -16,6 +16,12 @@ package com.hyphenate.chatuidemo.ui;
 
 import java.util.UUID;
 
+import com.easemob.chat.EMCallStateChangeListener;
+import com.easemob.chat.EMChatManager;
+import com.easemob.exceptions.EMServiceNotReadyException;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.R;
+
 import android.media.AudioManager;
 import android.media.RingtoneManager;
 import android.media.SoundPool;
@@ -34,12 +40,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.chat.EMCallStateChangeListener;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.exceptions.EMServiceNotReadyException;
-import com.hyphenate.chatuidemo.DemoHelper;
 
 /**
  * 语音通话页面

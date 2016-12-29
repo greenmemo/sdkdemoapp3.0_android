@@ -15,7 +15,12 @@ package com.hyphenate.chatuidemo.ui;
 
 import java.util.List;
 
-import org.apache.harmony.javax.security.auth.Refreshable;
+import com.easemob.EMValueCallBack;
+import com.easemob.chat.EMGroup;
+import com.easemob.chat.EMGroupManager;
+import com.hyphenate.chatuidemo.Constant;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.adapter.GroupAdapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -32,14 +37,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.easemob.EMValueCallBack;
-import com.easemob.chat.EMGroup;
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.util.EMLog;
-import com.hyphenate.chatuidemo.Constant;
-import com.hyphenate.chatuidemo.adapter.GroupAdapter;
 
 public class GroupsActivity extends BaseActivity {
 	public static final String TAG = "GroupsActivity";

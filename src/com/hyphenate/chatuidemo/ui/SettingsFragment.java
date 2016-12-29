@@ -13,6 +13,15 @@
  */
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.EMCallBack;
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMChatOptions;
+import com.hyphenate.chatuidemo.Constant;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.DemoModel;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.easeui.widget.EaseSwitchButton;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,16 +36,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.EMCallBack;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMChatOptions;
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.widget.EaseSwitchButton;
-import com.hyphenate.chatuidemo.Constant;
-import com.hyphenate.chatuidemo.DemoHelper;
-import com.hyphenate.chatuidemo.DemoModel;
-import com.hyphenate.chatuidemo.utils.PreferenceManager;
 
 /**
  * 设置界面

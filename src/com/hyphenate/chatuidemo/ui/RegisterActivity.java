@@ -13,19 +13,18 @@
  */
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.EMError;
+import com.easemob.chat.EMChatManager;
+import com.easemob.exceptions.EaseMobException;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.R;
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.easemob.EMError;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.exceptions.EaseMobException;
-import com.hyphenate.chatuidemo.DemoApplication;
-import com.hyphenate.chatuidemo.DemoHelper;
 
 /**
  * 注册页

@@ -13,13 +13,13 @@
  */
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.chat.EMMessage;
+import com.hyphenate.chatuidemo.Constant;
+import com.hyphenate.chatuidemo.R;
+
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-
-import com.easemob.chat.EMMessage;
-import com.easemob.chatuidemo.R;
-import com.hyphenate.chatuidemo.Constant;
 
 public class ContextMenuActivity extends BaseActivity {
     public static final int RESULT_CODE_COPY = 1;

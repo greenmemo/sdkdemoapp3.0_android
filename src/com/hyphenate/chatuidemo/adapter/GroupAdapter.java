@@ -15,8 +15,10 @@ package com.hyphenate.chatuidemo.adapter;
 
 import java.util.List;
 
+import com.easemob.chat.EMGroup;
+import com.hyphenate.chatuidemo.R;
+
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -28,9 +30,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.easemob.chat.EMGroup;
-import com.easemob.chatuidemo.R;
 
 public class GroupAdapter extends ArrayAdapter<EMGroup> {
 

@@ -1,5 +1,10 @@
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.EMCallBack;
+import com.easemob.chat.EMChat;
+import com.easemob.util.EMLog;
+import com.hyphenate.chatuidemo.R;
+
 import android.app.ProgressDialog;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -10,11 +15,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.EMCallBack;
-import com.easemob.chat.EMChat;
-import com.easemob.chatuidemo.R;
-import com.easemob.util.EMLog;
 
 /**
  * Copyright (C) 2013-2014 EaseMob Technologies. All rights reserved.

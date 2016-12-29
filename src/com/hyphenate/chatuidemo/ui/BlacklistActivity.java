@@ -3,6 +3,11 @@ package com.hyphenate.chatuidemo.ui;
 import java.util.Collections;
 import java.util.List;
 
+import com.easemob.chat.EMContactManager;
+import com.easemob.exceptions.EaseMobException;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.easeui.utils.EaseUserUtils;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -18,11 +23,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.chat.EMContactManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.utils.EaseUserUtils;
-import com.easemob.exceptions.EaseMobException;
 
 /**
  * 黑名单列表页面

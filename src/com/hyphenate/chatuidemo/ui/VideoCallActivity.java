@@ -15,6 +15,14 @@ package com.hyphenate.chatuidemo.ui;
 
 import java.util.UUID;
 
+import com.easemob.chat.EMCallStateChangeListener;
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMVideoCallHelper;
+import com.easemob.exceptions.EMServiceNotReadyException;
+import com.hyphenate.chatuidemo.DemoHelper;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.utils.CameraHelper;
+
 import android.media.AudioManager;
 import android.media.RingtoneManager;
 import android.media.SoundPool;
@@ -36,15 +44,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.chat.EMCallStateChangeListener;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMVideoCallHelper;
-import com.easemob.chat.EMVideoCallHelper.EMVideoOrientation;
-import com.easemob.chatuidemo.R;
-import com.easemob.exceptions.EMServiceNotReadyException;
-import com.hyphenate.chatuidemo.DemoHelper;
-import com.hyphenate.chatuidemo.utils.CameraHelper;
 
 public class VideoCallActivity extends CallActivity implements OnClickListener {
 

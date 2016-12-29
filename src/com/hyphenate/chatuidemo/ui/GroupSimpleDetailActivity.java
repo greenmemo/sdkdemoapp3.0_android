@@ -14,6 +14,13 @@
 
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMGroup;
+import com.easemob.chat.EMGroupInfo;
+import com.easemob.chat.EMGroupManager;
+import com.easemob.exceptions.EaseMobException;
+import com.hyphenate.chatuidemo.R;
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -21,13 +28,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMGroup;
-import com.easemob.chat.EMGroupInfo;
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.exceptions.EaseMobException;
 
 public class GroupSimpleDetailActivity extends BaseActivity {
 	private Button btn_add_group;

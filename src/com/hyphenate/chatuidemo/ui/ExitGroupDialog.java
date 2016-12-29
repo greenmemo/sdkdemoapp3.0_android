@@ -13,13 +13,13 @@
  */
 package com.hyphenate.chatuidemo.ui;
 
+import com.hyphenate.chatuidemo.R;
+
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.easemob.chatuidemo.R;
 
 public class ExitGroupDialog extends BaseActivity{
     private TextView text;

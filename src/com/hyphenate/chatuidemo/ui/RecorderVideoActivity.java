@@ -18,6 +18,12 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import com.easemob.util.EMLog;
+import com.easemob.util.PathUtil;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.video.util.Utils;
+import com.hyphenate.easeui.utils.EaseCommonUtils;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -50,12 +56,6 @@ import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.VideoView;
-
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.utils.EaseCommonUtils;
-import com.easemob.util.EMLog;
-import com.easemob.util.PathUtil;
-import com.hyphenate.chatuidemo.video.util.Utils;
 
 public class RecorderVideoActivity extends BaseActivity implements
 		OnClickListener, SurfaceHolder.Callback, OnErrorListener,

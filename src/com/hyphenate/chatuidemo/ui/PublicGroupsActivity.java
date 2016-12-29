@@ -17,6 +17,12 @@ package com.hyphenate.chatuidemo.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.easemob.chat.EMCursorResult;
+import com.easemob.chat.EMGroupInfo;
+import com.easemob.chat.EMGroupManager;
+import com.easemob.exceptions.EaseMobException;
+import com.hyphenate.chatuidemo.R;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,12 +40,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.chat.EMCursorResult;
-import com.easemob.chat.EMGroupInfo;
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.exceptions.EaseMobException;
 
 public class PublicGroupsActivity extends BaseActivity {
 	private ProgressBar pb;

@@ -16,6 +16,20 @@ package com.hyphenate.chatuidemo.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMGroup;
+import com.easemob.chat.EMGroupManager;
+import com.easemob.exceptions.EaseMobException;
+import com.easemob.util.EMLog;
+import com.easemob.util.NetUtils;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.easeui.ui.EaseGroupRemoveListener;
+import com.hyphenate.easeui.utils.EaseUserUtils;
+import com.hyphenate.easeui.widget.EaseAlertDialog;
+import com.hyphenate.easeui.widget.EaseAlertDialog.AlertDialogUser;
+import com.hyphenate.easeui.widget.EaseExpandGridView;
+import com.hyphenate.easeui.widget.EaseSwitchButton;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -36,20 +50,6 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMGroup;
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.ui.EaseGroupRemoveListener;
-import com.easemob.easeui.utils.EaseUserUtils;
-import com.easemob.easeui.widget.EaseAlertDialog;
-import com.easemob.easeui.widget.EaseAlertDialog.AlertDialogUser;
-import com.easemob.easeui.widget.EaseExpandGridView;
-import com.easemob.easeui.widget.EaseSwitchButton;
-import com.easemob.exceptions.EaseMobException;
-import com.easemob.util.EMLog;
-import com.easemob.util.NetUtils;
 
 public class GroupDetailsActivity extends BaseActivity implements OnClickListener {
 	private static final String TAG = "GroupDetailsActivity";

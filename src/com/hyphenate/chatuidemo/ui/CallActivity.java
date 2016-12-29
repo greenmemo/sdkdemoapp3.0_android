@@ -1,17 +1,17 @@
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.chat.EMCallStateChangeListener;
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMMessage;
+import com.easemob.chat.TextMessageBody;
+import com.hyphenate.chatuidemo.Constant;
+import com.hyphenate.chatuidemo.R;
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.SoundPool;
 import android.os.Bundle;
-
-import com.easemob.chat.EMCallStateChangeListener;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMMessage;
-import com.easemob.chat.TextMessageBody;
-import com.easemob.chatuidemo.R;
-import com.hyphenate.chatuidemo.Constant;
 
 public class CallActivity extends BaseActivity {
 

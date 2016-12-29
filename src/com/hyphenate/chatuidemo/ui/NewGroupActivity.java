@@ -13,7 +13,11 @@
  */
 package com.hyphenate.chatuidemo.ui;
 
-import android.app.AlertDialog;
+import com.easemob.chat.EMGroupManager;
+import com.easemob.exceptions.EaseMobException;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.easeui.widget.EaseAlertDialog;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,11 +29,6 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.widget.EaseAlertDialog;
-import com.easemob.exceptions.EaseMobException;
 
 public class NewGroupActivity extends BaseActivity {
 	private EditText groupNameEditText;

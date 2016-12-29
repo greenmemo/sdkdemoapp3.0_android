@@ -13,7 +13,7 @@
  */
 package com.hyphenate.chatuidemo;
 
-import com.easemob.easeui.EaseConstant;
+import com.hyphenate.easeui.EaseConstant;
 
 public class Constant extends EaseConstant{
 	public static final String NEW_FRIENDS_USERNAME = "item_new_friends";

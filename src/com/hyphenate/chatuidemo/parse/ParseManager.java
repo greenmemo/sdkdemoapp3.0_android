@@ -7,8 +7,8 @@ import android.content.Context;
 
 import com.easemob.EMValueCallBack;
 import com.easemob.chat.EMChatManager;
-import com.easemob.easeui.domain.EaseUser;
-import com.easemob.easeui.utils.EaseCommonUtils;
+import com.hyphenate.easeui.domain.EaseUser;
+import com.hyphenate.easeui.utils.EaseCommonUtils;
 import com.easemob.util.EMLog;
 import com.hyphenate.chatuidemo.DemoHelper;
 import com.parse.FindCallback;

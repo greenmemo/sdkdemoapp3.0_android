@@ -25,6 +25,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.hyphenate.chatuidemo.BuildConfig;
+
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -38,8 +40,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.util.LruCache;
 import android.util.Log;
-
-import com.easemob.chatuidemo.BuildConfig;
 
 /**
  * This class memory caching of bitmaps in conjunction with the

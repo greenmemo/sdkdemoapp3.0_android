@@ -3,6 +3,10 @@ package com.hyphenate.chatuidemo.ui;
 import java.util.Collections;
 import java.util.List;
 
+import com.easemob.chat.EMGroupManager;
+import com.easemob.exceptions.EaseMobException;
+import com.hyphenate.chatuidemo.R;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -16,10 +20,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
-import com.easemob.exceptions.EaseMobException;
 
 public class GroupBlacklistActivity extends BaseActivity {
 	private ListView listView;

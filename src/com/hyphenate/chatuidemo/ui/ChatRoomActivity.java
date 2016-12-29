@@ -15,6 +15,12 @@ package com.hyphenate.chatuidemo.ui;
 
 import java.util.List;
 
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMChatRoom;
+import com.hyphenate.chatuidemo.Constant;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.adapter.ChatRoomAdapter;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,12 +33,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
-
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMChatRoom;
-import com.easemob.chatuidemo.R;
-import com.hyphenate.chatuidemo.Constant;
-import com.hyphenate.chatuidemo.adapter.ChatRoomAdapter;
 
 public class ChatRoomActivity extends BaseActivity {
 	private ListView chatListView;

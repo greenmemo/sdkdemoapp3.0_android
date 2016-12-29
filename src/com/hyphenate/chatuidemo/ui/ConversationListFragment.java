@@ -1,5 +1,14 @@
 package com.hyphenate.chatuidemo.ui;
 
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMConversation;
+import com.easemob.chat.EMConversation.EMConversationType;
+import com.easemob.util.NetUtils;
+import com.hyphenate.chatuidemo.Constant;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.db.InviteMessgeDao;
+import com.hyphenate.easeui.ui.EaseConversationListFragment;
+
 import android.content.Intent;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -11,15 +20,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMConversation;
-import com.easemob.chat.EMConversation.EMConversationType;
-import com.easemob.chatuidemo.R;
-import com.easemob.easeui.ui.EaseConversationListFragment;
-import com.easemob.util.NetUtils;
-import com.hyphenate.chatuidemo.Constant;
-import com.hyphenate.chatuidemo.db.InviteMessgeDao;
 
 public class ConversationListFragment extends EaseConversationListFragment{
 

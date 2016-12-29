@@ -15,6 +15,13 @@ package com.hyphenate.chatuidemo.adapter;
 
 import java.util.List;
 
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMGroupManager;
+import com.hyphenate.chatuidemo.R;
+import com.hyphenate.chatuidemo.db.InviteMessgeDao;
+import com.hyphenate.chatuidemo.domain.InviteMessage;
+import com.hyphenate.chatuidemo.domain.InviteMessage.InviteMesageStatus;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -29,13 +36,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chatuidemo.R;
-import com.hyphenate.chatuidemo.db.InviteMessgeDao;
-import com.hyphenate.chatuidemo.domain.InviteMessage;
-import com.hyphenate.chatuidemo.domain.InviteMessage.InviteMesageStatus;
 
 public class NewFriendsMsgAdapter extends ArrayAdapter<InviteMessage> {
 
