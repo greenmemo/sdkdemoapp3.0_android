@@ -158,7 +158,23 @@ public class PublicChatRoomsActivity extends BaseActivity {
             public void onRemovedFromChatRoom(String roomId, String roomName,
                                               String participant) {
             }
-            
+
+	        // ============================= group_reform new add api begin
+	        @Override
+	        public void onAddMutes(String chatRoomId, List<String> mutes) {}
+
+	        @Override
+	        public void onRemoveMutes(String chatRoomId, List<String> mutes) {}
+
+	        @Override
+	        public void onAddAdmin(String chatRoomId, String admin) {}
+
+	        @Override
+	        public void onRemoveAdmin(String chatRoomId, String admin) {}
+
+	        @Override
+	        public void onAssignOwner(String chatRoomId, String owner) {}
+	        // ============================= group_reform new add api end
         });
 
         listView.setOnItemClickListener(new OnItemClickListener() {

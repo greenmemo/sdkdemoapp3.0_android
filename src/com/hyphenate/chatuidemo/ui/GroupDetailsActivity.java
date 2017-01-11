@@ -925,7 +925,25 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
             // TODO Auto-generated method stub
             
         }
-    	
+
+	    // ============================= group_reform new add api begin
+	    @Override
+	    public void onAddMutesFromGroup(String groupId, final List<String> mutes) {}
+
+
+	    @Override
+	    public void onRemoveMutesFromGroup(String groupId, final List<String> mutes) {}
+
+
+	    @Override
+	    public void onAddAdminFromGroup(String groupId, String admin) {}
+
+	    @Override
+	    public void onRemoveAdminFromGroup(String groupId, String admin) {}
+
+	    @Override
+	    public void onAssignOwnerFromGroup(String groupId, String owner) {}
+	    // ============================= group_reform new add api end
     }
 
 }

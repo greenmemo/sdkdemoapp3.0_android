@@ -648,6 +648,25 @@ public class DemoHelper {
             EMLog.d(TAG, "onAutoAcceptInvitationFromGroup groupId:" + groupId);
             broadcastManager.sendBroadcast(new Intent(Constant.ACTION_GROUP_CHANAGED));
         }
+
+        // ============================= group_reform new add api begin
+        @Override
+        public void onAddMutesFromGroup(String groupId, final List<String> mutes) {}
+
+
+        @Override
+        public void onRemoveMutesFromGroup(String groupId, final List<String> mutes) {}
+
+
+        @Override
+        public void onAddAdminFromGroup(String groupId, String admin) {}
+
+        @Override
+        public void onRemoveAdminFromGroup(String groupId, String admin) {}
+
+        @Override
+        public void onAssignOwnerFromGroup(String groupId, String owner) {}
+        // ============================= group_reform new add api end
     }
     
     /***
