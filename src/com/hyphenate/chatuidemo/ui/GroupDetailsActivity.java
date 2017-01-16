@@ -928,21 +928,21 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 
 	    // ============================= group_reform new add api begin
 	    @Override
-	    public void onAddMutesFromGroup(String groupId, final List<String> mutes) {}
+	    public void onAddMuteList(String groupId, final List<String> mutes) {}
 
 
 	    @Override
-	    public void onRemoveMutesFromGroup(String groupId, final List<String> mutes) {}
+	    public void onRemoveMuteList(String groupId, final List<String> mutes) {}
 
 
 	    @Override
-	    public void onAddAdminFromGroup(String groupId, String admin) {}
+	    public void onAddAdministrator(String groupId, String administrator) {}
 
 	    @Override
-	    public void onRemoveAdminFromGroup(String groupId, String admin) {}
+	    public void onRemoveAdministrator(String groupId, String administrator) {}
 
 	    @Override
-	    public void onAssignOwnerFromGroup(String groupId, String owner) {}
+	    public void onChangeOwner(String groupId, String owner) {}
 	    // ============================= group_reform new add api end
     }
 

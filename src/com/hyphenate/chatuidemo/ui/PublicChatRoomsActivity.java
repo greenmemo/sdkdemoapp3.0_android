@@ -161,10 +161,10 @@ public class PublicChatRoomsActivity extends BaseActivity {
 
 	        // ============================= group_reform new add api begin
 	        @Override
-	        public void onAddMutes(String chatRoomId, List<String> mutes) {}
+	        public void onAddMuteList(String chatRoomId, List<String> mutes) {}
 
 	        @Override
-	        public void onRemoveMutes(String chatRoomId, List<String> mutes) {}
+	        public void onRemoveMuteList(String chatRoomId, List<String> mutes) {}
 
 	        @Override
 	        public void onAddAdmin(String chatRoomId, String admin) {}
