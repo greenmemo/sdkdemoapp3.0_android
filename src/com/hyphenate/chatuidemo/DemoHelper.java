@@ -665,7 +665,7 @@ public class DemoHelper {
         public void onRemoveAdministrator(String groupId, String administrator) {}
 
         @Override
-        public void onChangeOwner(String groupId, String owner) {}
+        public void onChangeOwner(String groupId, String newOwner, String oldOwner) {}
         // ============================= group_reform new add api end
     }
     

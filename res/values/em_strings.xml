@@ -349,4 +349,12 @@
     <string name="push_saving_settings">Saving settings</string>
     <string name="push_save_failed">Save settings failed</string>
     <string name="loading_more">loading more…</string>
+
+    <string name="destroy_chatroom">Destroy the chatroom</string>
+    <string name="chatroom_subject">Chat room subject</string>
+    <string name="change_chatroom_subject">change chat room subject</string>
+    <string name="change_chatroom_description">change chat room description</string>
+    <string name="chat_room_nick">chat room nick</string>
+    <string name="is_quit_the_chat_room">is quit chat room?</string>
+    <string name="chat_room_id">chat room ID</string>
 </resources>

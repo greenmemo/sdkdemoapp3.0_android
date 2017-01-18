@@ -356,4 +356,11 @@
     <string name="push_saving_settings">正在保存...</string>
     <string name="push_save_failed">保存失败</string>
     <string name="loading_more">正在加载更多……</string>
+
+    <string name="destroy_chatroom">销毁聊天室</string>
+    <string name="chatroom_subject">Chat room subject</string>
+    <string name="change_chatroom_subject">修改聊天室标题</string>
+    <string name="change_chatroom_description">修改聊天室描述</string>
+    <string name="is_quit_the_chat_room">是否退出聊天室</string>
+    <string name="chat_room_id">聊天室ID</string>
 </resources>
