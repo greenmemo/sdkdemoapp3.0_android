@@ -363,4 +363,9 @@
     <string name="change_chatroom_description">修改聊天室描述</string>
     <string name="is_quit_the_chat_room">是否退出聊天室</string>
     <string name="chat_room_id">聊天室ID</string>
+    <string name="The_new_chat_room">创建聊天室</string>
+    <string name="chat_room_name">聊天室名称</string>
+    <string name="chat_room_description">聊天室描述</string>
+    <string name="Failed_to_create_chat_room">创建聊天室失败</string>
+
 </resources>

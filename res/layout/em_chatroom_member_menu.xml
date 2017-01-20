@@ -2,95 +2,65 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="wrap_content"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
               >
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/chat_room_menu_item_wrapper"
         android:id="@+id/menu_item_add_admin"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:onClick="onClick">
+        >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="add to administrator"
             style="@style/chat_room_menu_item_text_style"/>
         <TextView style="@style/chat_room_menu_item_splitter"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/chat_room_menu_item_wrapper"
         android:id="@+id/menu_item_rm_admin"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:onClick="onClick">
+        >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="remove admin privilege"
             style="@style/chat_room_menu_item_text_style"/>
         <TextView style="@style/chat_room_menu_item_splitter"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/chat_room_menu_item_wrapper"
         android:id="@+id/menu_item_transfer_owner"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:onClick="onClick">
+        >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="transfer owner ship"
             style="@style/chat_room_menu_item_text_style"/>
         <TextView style="@style/chat_room_menu_item_splitter"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/chat_room_menu_item_wrapper"
         android:id="@+id/menu_item_add_to_blacklist"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:onClick="onClick">
+        >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="add to black list"
             style="@style/chat_room_menu_item_text_style"/>
         <TextView style="@style/chat_room_menu_item_splitter"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/chat_room_menu_item_wrapper"
         android:id="@+id/menu_item_remove_from_blacklist"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:onClick="onClick">
+        >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="remove from black list"
             style="@style/chat_room_menu_item_text_style"/>
         <TextView style="@style/chat_room_menu_item_splitter"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/chat_room_menu_item_wrapper"
         android:id="@+id/menu_item_mute"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:onClick="onClick">
+        >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="mute"
             style="@style/chat_room_menu_item_text_style"/>
         <TextView style="@style/chat_room_menu_item_splitter"/>
@@ -98,15 +68,10 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/chat_room_menu_item_wrapper"
         android:id="@+id/menu_item_unmute"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:onClick="onClick">
+        >
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="unmute"
             style="@style/chat_room_menu_item_text_style"/>
         <TextView style="@style/chat_room_menu_item_splitter"/>

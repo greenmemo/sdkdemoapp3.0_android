@@ -43,13 +43,17 @@ import com.hyphenate.easeui.widget.EaseExpandGridView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ChatRoomDetailsActivity extends BaseActivity implements OnClickListener {
 	private static final String TAG = "ChatRoomDetailsActivity";
 	private static final int REQUEST_CODE_EXIT = 1;
 	private static final int REQUEST_CODE_EXIT_DELETE = 2;
 	private static final int REQUEST_CODE_CLEAR_ALL_HISTORY = 3;
+	private static final int REQUEST_CODE_EDIT_CHAT_ROOM_NAME= 4;
+	private static final int REQUEST_CODE_EDIT_CHAT_ROOM_DESCRIPTION = 5;
 
 	String operationUserId;
 
@@ -61,7 +65,6 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 	private ProgressDialog progressDialog;
 
 	public static ChatRoomDetailsActivity instance;
-
 
 	String st = "";
 
@@ -77,7 +80,6 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 		instance = this;
 		st = getResources().getString(R.string.people);
 		loadingPB = (ProgressBar) findViewById(R.id.progressBar);
-		RelativeLayout blacklistLayout = (RelativeLayout) findViewById(R.id.rl_blacklist);
 		RelativeLayout changeChatRoomNameLayout = (RelativeLayout) findViewById(R.id.rl_change_chatroom_name);
 		RelativeLayout changeChatRoomDescriptionLayout = (RelativeLayout) findViewById(R.id.rl_change_chatroom_detail);
 
@@ -94,34 +96,33 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 		chatRoomNickTextView.setText(room.getName());
 
 		if (isCurrentOwner(room) || isCurrentAdmin(room)) {
-			blacklistLayout.setVisibility(View.VISIBLE);
 			changeChatRoomNameLayout.setVisibility(View.VISIBLE);
 			changeChatRoomDescriptionLayout.setVisibility(View.VISIBLE);
 		} else {
-			blacklistLayout.setVisibility(View.GONE);
 			changeChatRoomNameLayout.setVisibility(View.GONE);
 			changeChatRoomDescriptionLayout.setVisibility(View.GONE);
 		}
 
 		// owner & admin list
-		List<String> ownerAdmins = new ArrayList<>();
-		ownerAdmins.add(room.getOwner());
-		ownerAdmins.addAll(room.getAdministratorList());
-		ownerAdminAdapter = new OwnerAdminAdapter(this, R.layout.em_grid_owner, ownerAdmins);
+
+		// adapter data list
+		List<String> ownerAdminList = new ArrayList<>();
+		ownerAdminList.add(room.getOwner());
+		ownerAdminList.addAll(room.getAdministratorList());
+		ownerAdminAdapter = new OwnerAdminAdapter(this, R.layout.em_grid_owner, ownerAdminList);
 		EaseExpandGridView ownerAdminGridView = (EaseExpandGridView) findViewById(R.id.owner_and_administrators);
 		ownerAdminGridView.setAdapter(ownerAdminAdapter);
 
 		// normal member list & black list && mute list
 		// most show 500 members, most show 500 mute members, most show 500 black list
-		memberList = new java.util.ArrayList<>();
-		memberList.addAll(room.getMemberList());
-		membersAdapter = new MemberAdapter(this, R.layout.em_grid_owner, memberList);
+		List<String> memberMuteBlockList = new ArrayList<>();
+		memberMuteBlockList.addAll(room.getMemberList());
+		membersAdapter = new MemberAdapter(this, R.layout.em_grid_owner, memberMuteBlockList);
 		EaseExpandGridView userGridView = (EaseExpandGridView) findViewById(R.id.gridview);
 		userGridView.setAdapter(membersAdapter);
 
 		updateRoom();
 
-		blacklistLayout.setOnClickListener(this);
 		changeChatRoomNameLayout.setOnClickListener(this);
 
 		final EMChatRoom finalRoom = room;
@@ -194,7 +195,7 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 
 	@SuppressWarnings("UnusedAssignment")
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		String st1 = getResources().getString(R.string.being_added);
 		String st2 = getResources().getString(R.string.is_quit_the_chat_room);
@@ -219,7 +220,37 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 					progressDialog.show();
 					exitGroup();
 					break;
-
+				case REQUEST_CODE_EDIT_CHAT_ROOM_NAME:
+					new Thread(new Runnable() {
+						@Override
+						public void run() {
+							try {
+								EMClient.getInstance().chatroomManager().changeChatroomSubject(roomId, data.getStringExtra("data"));
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+							runOnUiThread(new Runnable() {
+								@Override
+								public void run() {
+									TextView tv = (TextView) findViewById(R.id.tv_chat_room_nick_value);
+									tv.setText(data.getStringExtra("data"));
+								}
+							});
+						}
+					}).start();
+					break;
+				case REQUEST_CODE_EDIT_CHAT_ROOM_DESCRIPTION:
+					new Thread(new Runnable() {
+						@Override
+						public void run() {
+							try {
+								EMClient.getInstance().chatroomManager().changeChatroomDescription(roomId, data.getStringExtra("data"));
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					}).start();
+					break;
 				default:
 					break;
 			}
@@ -292,11 +323,19 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 					adminList.addAll(room.getAdministratorList());
 					memberList.clear();
 					memberList.addAll(EMClient.getInstance().chatroomManager().fetchChatroomMembers(roomId, 0, 500));
+					memberList.remove(room.getOwner());
+					memberList.removeAll(adminList);
+
+					// those two operation need authentication, may failed
 					muteList.clear();
 					muteList.addAll(EMClient.getInstance().chatroomManager().fetchChatRoomMuteList(roomId, 0, 500));
 					blackList.clear();
 					blackList.addAll(EMClient.getInstance().chatroomManager().fetchChatRoomBlockList(roomId, 0, 500));
-
+					memberList.removeAll(muteList);
+					memberList.removeAll(blackList);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
 					runOnUiThread(new Runnable() {
 						public void run() {
 							TextView chatRoomNickTextView = (TextView) findViewById(R.id.tv_chat_room_nick_value);
@@ -311,13 +350,6 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 									View.VISIBLE : View.GONE);
 						}
 					});
-
-				} catch (Exception e) {
-					runOnUiThread(new Runnable() {
-						public void run() {
-							loadingPB.setVisibility(View.INVISIBLE);
-						}
-					});
 				}
 			}
 		}).start();
@@ -328,8 +360,9 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 			@Override
 			public void run() {
 				ownerAdminAdapter.clear();
-				synchronized (memberList) {
-					ownerAdminAdapter.addAll(memberList);
+				ownerAdminAdapter.add(room.getOwner());
+				synchronized (adminList) {
+					ownerAdminAdapter.addAll(adminList);
 				}
 				ownerAdminAdapter.notifyDataSetChanged();
 			}
@@ -343,6 +376,12 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 				membersAdapter.clear();
 				synchronized (memberList) {
 					membersAdapter.addAll(memberList);
+				}
+				synchronized (muteList) {
+					membersAdapter.addAll(muteList);
+				}
+				synchronized (blackList) {
+					membersAdapter.addAll(blackList);
 				}
 				membersAdapter.notifyDataSetChanged();
 			}
@@ -364,36 +403,21 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 					}
 				}, true).show();
 				break;
-			case R.id.menu_item_add_admin:
-				new Thread(new Runnable() {
-					@Override
-					public void run() {
-
-						updateRoom();
-					}
-				}).start();
+			case R.id.rl_change_chatroom_name:
+				startActivityForResult(new Intent(this, EditActivity.class).putExtra("data", room.getName()).putExtra("title", "edit chat room name"),
+						REQUEST_CODE_EDIT_CHAT_ROOM_NAME);
 				break;
-			case R.id.menu_item_rm_admin:
-				break;
-			case R.id.menu_item_add_to_blacklist:
-				break;
-			case R.id.menu_item_remove_from_blacklist:
-				break;
-			case R.id.menu_item_mute:
-				break;
-			case R.id.menu_item_unmute:
-				break;
-			case R.id.menu_item_transfer_owner:
+			case R.id.rl_change_chatroom_detail:
+				startActivityForResult(new Intent(this, EditActivity.class).putExtra("data", room.getDescription()).putExtra("title", "edit chat room detail"),
+						REQUEST_CODE_EDIT_CHAT_ROOM_DESCRIPTION);
 				break;
 			default:
 				break;
 		}
-
 	}
 
 	private class OwnerAdminAdapter extends ArrayAdapter<String> {
 		private int res;
-		private List<String> ownerAndAdministratorList;
 
 		/**
 		 * Owner and Administrator list
@@ -405,7 +429,6 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 		public OwnerAdminAdapter(Context context, int textViewResourceId, List<String> ownerAndAdministratorList) {
 			super(context, textViewResourceId, ownerAndAdministratorList);
 			res = textViewResourceId;
-			this.ownerAndAdministratorList = ownerAndAdministratorList;
 		}
 
 		@Override
@@ -438,9 +461,7 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 					}
 					// do nothing here, you can show group member's profile here
 					operationUserId = username;
-					Dialog dialog = new Dialog(ChatRoomDetailsActivity.this);
-					dialog.setTitle("chat room");
-					dialog.setContentView(R.layout.em_chatroom_member_menu);
+					Dialog dialog = createChatRoomMemberMenuDialog();
 					dialog.show();
 
 					LinearLayout itemAddAdmin = (LinearLayout)dialog.findViewById(R.id.menu_item_add_admin);
@@ -452,8 +473,13 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 					LinearLayout itemUnMute = (LinearLayout) dialog.findViewById(R.id.menu_item_unmute);
 
 					if (isAdmin(username)) {
+						itemAddAdmin.setVisibility(View.GONE);
 						itemRemoveAdmin.setVisibility(View.VISIBLE);
 						itemTransferOwner.setVisibility(View.VISIBLE);
+						itemAddToBlackList.setVisibility(View.GONE);
+						itemRemoveFromBlackList.setVisibility(View.GONE);
+						itemMute.setVisibility(View.GONE);
+						itemUnMute.setVisibility(View.GONE);
 					}
 				}
 			});
@@ -464,6 +490,86 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 		public int getCount() {
 			return super.getCount();
 		}
+	}
+
+	Dialog createChatRoomMemberMenuDialog() {
+		final Dialog dialog = new Dialog(ChatRoomDetailsActivity.this);
+		dialog.setTitle("chat room");
+		dialog.setContentView(R.layout.em_chatroom_member_menu);
+
+		int ids[] = { R.id.menu_item_add_admin,
+				R.id.menu_item_rm_admin,
+				R.id.menu_item_add_to_blacklist,
+				R.id.menu_item_remove_from_blacklist,
+				R.id.menu_item_transfer_owner,
+				R.id.menu_item_mute,
+				R.id.menu_item_unmute};
+
+		for (int id : ids) {
+			LinearLayout linearLayout = (LinearLayout)dialog.findViewById(id);
+			linearLayout.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(final View v) {
+					dialog.dismiss();
+					loadingPB.setVisibility(View.VISIBLE);
+
+					new Thread(new Runnable() {
+						@Override
+						public void run() {
+							try {
+								switch (v.getId()) {
+									case R.id.menu_item_add_admin:
+										EMClient.getInstance().chatroomManager().addChatRoomAdmin(roomId, operationUserId);
+										break;
+									case R.id.menu_item_rm_admin:
+										EMClient.getInstance().chatroomManager().removeChatRoomAdmin(roomId, operationUserId);
+										break;
+									case R.id.menu_item_add_to_blacklist: {
+											List<String> list = new ArrayList<>();
+											list.add(operationUserId);
+											EMClient.getInstance().chatroomManager().blockChatroomMembers(roomId, list);
+										}
+										break;
+									case R.id.menu_item_remove_from_blacklist: {
+											List<String> list1 = new ArrayList<>();
+											list1.add(operationUserId);
+											EMClient.getInstance().chatroomManager().unblockChatRoomMembers(roomId, list1);
+										}
+										break;
+									case R.id.menu_item_mute:
+										Map<String, Long> banPost = new HashMap<>();
+										banPost.put(operationUserId, new Long(1000 * 60 * 20));
+										EMClient.getInstance().chatroomManager().muteChatRoomMembers(roomId, banPost);
+										break;
+									case R.id.menu_item_unmute:
+										List<String> list = new ArrayList<>();
+										list.add(operationUserId);
+										EMClient.getInstance().chatroomManager().unmuteChatRoomMembers(roomId, list);
+										break;
+									case R.id.menu_item_transfer_owner:
+										EMClient.getInstance().chatroomManager().changeOwner(roomId, operationUserId);
+										break;
+									default:
+										break;
+								}
+								updateRoom();
+							} catch (Exception e) {
+								e.printStackTrace();
+							} finally {
+								runOnUiThread(new Runnable() {
+									@Override
+									public void run() {
+										loadingPB.setVisibility(View.INVISIBLE);
+									}
+								});
+							}
+						}
+					}).start();
+				}
+			});
+		}
+		return dialog;
 	}
 
 
@@ -518,42 +624,30 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 					}
 					// do nothing here, you can show group member's profile here
 					operationUserId = username;
-					Dialog dialog = new Dialog(ChatRoomDetailsActivity.this);
-					dialog.setTitle("chat room");
-					dialog.setContentView(R.layout.em_chatroom_member_menu);
+					Dialog dialog = createChatRoomMemberMenuDialog();
 					dialog.show();
 
+					LinearLayout itemTransferOwner = (LinearLayout)dialog.findViewById(R.id.menu_item_transfer_owner);
 					LinearLayout itemAddAdmin = (LinearLayout)dialog.findViewById(R.id.menu_item_add_admin);
 					LinearLayout itemRemoveAdmin = (LinearLayout)dialog.findViewById(R.id.menu_item_rm_admin);
-					LinearLayout itemTransferOwner = (LinearLayout)dialog.findViewById(R.id.menu_item_transfer_owner);
 					LinearLayout itemAddToBlackList = (LinearLayout) dialog.findViewById(R.id.menu_item_add_to_blacklist);
 					LinearLayout itemRemoveFromBlackList = (LinearLayout) dialog.findViewById(R.id.menu_item_remove_from_blacklist);
 					LinearLayout itemMute = (LinearLayout) dialog.findViewById(R.id.menu_item_mute);
 					LinearLayout itemUnMute = (LinearLayout) dialog.findViewById(R.id.menu_item_unmute);
 
+					itemTransferOwner.setVisibility(View.GONE);
+					itemRemoveAdmin.setVisibility(View.GONE);
 					if (isCurrentOwner(room)) {
 						itemAddAdmin.setVisibility(View.VISIBLE);
-						if (!isInBlackList(username)) {
-							itemAddToBlackList.setVisibility(View.VISIBLE);
-						} else {
-							itemRemoveFromBlackList.setVisibility(View.VISIBLE);
-						}
-						if (!isInMuteList(username)) {
-							itemMute.setVisibility(View.VISIBLE);
-						} else {
-							itemUnMute.setVisibility(View.VISIBLE);
-						}
-					} else if (isCurrentAdmin(room)) {
-						if (!isInBlackList(username)) {
-							itemAddToBlackList.setVisibility(View.VISIBLE);
-						} else {
-							itemRemoveFromBlackList.setVisibility(View.VISIBLE);
-						}
-						if (!isInMuteList(username)) {
-							itemMute.setVisibility(View.VISIBLE);
-						} else {
-							itemUnMute.setVisibility(View.VISIBLE);
-						}
+					}
+					if (isCurrentOwner(room) || isCurrentAdmin(room)) {
+						boolean inBlackList = isInBlackList(username);
+						itemAddToBlackList.setVisibility(!inBlackList ? View.VISIBLE : View.GONE);
+						itemRemoveFromBlackList.setVisibility(inBlackList ? View.VISIBLE : View.GONE);
+
+						boolean inMuteList = isInMuteList(username);
+						itemMute.setVisibility(!inMuteList ? View.VISIBLE : View.GONE);
+						itemUnMute.setVisibility(inMuteList ? View.VISIBLE : View.GONE);
 					}
 				}
 			});

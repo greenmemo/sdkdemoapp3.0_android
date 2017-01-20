@@ -354,7 +354,11 @@
     <string name="chatroom_subject">Chat room subject</string>
     <string name="change_chatroom_subject">change chat room subject</string>
     <string name="change_chatroom_description">change chat room description</string>
-    <string name="chat_room_nick">chat room nick</string>
+    <string name="chat_room_nick">name: </string>
     <string name="is_quit_the_chat_room">is quit chat room?</string>
     <string name="chat_room_id">chat room ID</string>
+    <string name="The_new_chat_room">Create new chat room</string>
+    <string name="chat_room_name">Chat room name</string>
+    <string name="chat_room_description">Chat room description</string>
+    <string name="Failed_to_create_chat_room">Failed to create chat room</string>
 </resources>
