@@ -193,8 +193,11 @@
     <string name="are_empty_group_of_news">Clearing messages</string>
     <string name="messages_are_empty">Messages has been cleared</string>
     <string name="is_modify_the_group_name">Modifying the group name..</string>
+    <string name="is_modify_the_group_description">Modifying the group description..</string>
     <string name="Modify_the_group_name_successful">Modify the group name successful</string>
+    <string name="Modify_the_group_description_successful">Modify the group description successful</string>
     <string name="change_the_group_name_failed_please">Failed to change the group name, please check the network or try again later</string>
+    <string name="change_the_group_description_failed_please">Failed to change the group name, please check the network or try again later</string>
     <string name="Are_moving_to_blacklist">Moving to blacklist</string>
     <string name="failed_to_move_into">Failed to move to the blacklist, please check the network or try again later</string>
     <string name="Exit_the_group_chat_failure">Failed to exit the group:</string>
@@ -284,6 +287,7 @@
     <string name="Delete_the_contact">Delete the contact</string>
     <string name="Move_into_the_blacklist_new">Move into the blacklist</string>
     <string name="Change_the_group_name">Change group name</string>
+    <string name="change_the_group_description">Change group description</string>
     <string name="Sync_Groups_From_Server">Sync groups with server</string>
     
     <string name="update_contact_list">Update contact list</string>

@@ -50,6 +50,7 @@ import com.hyphenate.util.EMLog;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PublicChatRoomsActivity extends BaseActivity {
 	private ProgressBar pb;
@@ -218,7 +219,7 @@ public class PublicChatRoomsActivity extends BaseActivity {
 
 	        // ============================= group_reform new add api begin
 	        @Override
-	        public void onAddMuteList(String chatRoomId, List<String> mutes) {}
+	        public void onAddMuteList(String chatRoomId, Map<String, Long> mutes) {}
 
 	        @Override
 	        public void onRemoveMuteList(String chatRoomId, List<String> mutes) {}
@@ -233,7 +234,6 @@ public class PublicChatRoomsActivity extends BaseActivity {
 	        public void onAssignOwner(String chatRoomId, String newOwner, String oldOwner) {}
 	        // ============================= group_reform new add api end
         });
-
 
         listView.setOnItemClickListener(new OnItemClickListener() {
 

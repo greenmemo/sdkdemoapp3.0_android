@@ -77,5 +77,15 @@
         <TextView style="@style/chat_room_menu_item_splitter"/>
     </LinearLayout>
 
+    <LinearLayout
+        style="@style/chat_room_menu_item_wrapper"
+        android:id="@+id/menu_item_delete"
+        android:visibility="gone"
+        >
+        <TextView
+            android:text="delete"
+            style="@style/chat_room_menu_item_text_style"/>
+        <TextView style="@style/chat_room_menu_item_splitter"/>
+    </LinearLayout>
 
 </LinearLayout>

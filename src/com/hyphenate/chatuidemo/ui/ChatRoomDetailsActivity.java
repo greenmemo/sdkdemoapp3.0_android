@@ -328,7 +328,7 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 
 					// those two operation need authentication, may failed
 					muteList.clear();
-					muteList.addAll(EMClient.getInstance().chatroomManager().fetchChatRoomMuteList(roomId, 0, 500));
+					muteList.addAll(EMClient.getInstance().chatroomManager().fetchChatRoomMuteList(roomId, 0, 500).keySet());
 					blackList.clear();
 					blackList.addAll(EMClient.getInstance().chatroomManager().fetchChatRoomBlockList(roomId, 0, 500));
 					memberList.removeAll(muteList);

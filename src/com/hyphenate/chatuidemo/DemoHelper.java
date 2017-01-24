@@ -651,7 +651,7 @@ public class DemoHelper {
 
         // ============================= group_reform new add api begin
         @Override
-        public void onAddMuteList(String groupId, final List<String> mutes) {}
+        public void onAddMuteList(String groupId, final Map<String, Long> mutes) {}
 
 
         @Override

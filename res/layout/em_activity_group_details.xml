@@ -53,6 +53,43 @@
             android:background="@android:color/transparent"
             android:orientation="vertical" >
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical|left"
+                android:paddingLeft="20dip"
+                android:text="Owner and administrators"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:typeface="serif" />
+
+            <com.hyphenate.easeui.widget.EaseExpandGridView
+                android:id="@+id/owner_and_administrators_grid_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/em_app_pref_bg"
+                android:gravity="start"
+                android:horizontalSpacing="6dp"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="4"
+                android:verticalSpacing="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical|left"
+                android:paddingLeft="20dip"
+                android:text="members"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:typeface="serif" />
+
             <com.hyphenate.easeui.widget.EaseExpandGridView
                 android:id="@+id/gridview"
                 android:layout_width="match_parent"
@@ -234,7 +271,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/rl_blacklist"
+                android:id="@+id/rl_change_group_description"
                 android:layout_width="match_parent"
                 android:layout_height="50dip"
                 android:background="@drawable/em_btn_bottom_selector" >
@@ -245,7 +282,7 @@
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical|left"
                     android:paddingLeft="20dip"
-                    android:text="@string/blacklist"
+                    android:text="@string/change_the_group_description"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:typeface="serif" />
