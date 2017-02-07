@@ -225,7 +225,7 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 						@Override
 						public void run() {
 							try {
-								EMClient.getInstance().chatroomManager().changeChatroomSubject(roomId, data.getStringExtra("data"));
+								EMClient.getInstance().chatroomManager().changeChatRoomSubject(roomId, data.getStringExtra("data"));
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
@@ -322,7 +322,7 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 					adminList.clear();
 					adminList.addAll(room.getAdministratorList());
 					memberList.clear();
-					memberList.addAll(EMClient.getInstance().chatroomManager().fetchChatroomMembers(roomId, 0, 500));
+					memberList.addAll(EMClient.getInstance().chatroomManager().fetchChatRoomMembers(roomId, 0, 500));
 					memberList.remove(room.getOwner());
 					memberList.removeAll(adminList);
 
@@ -545,7 +545,7 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 									case R.id.menu_item_unmute:
 										List<String> list = new ArrayList<>();
 										list.add(operationUserId);
-										EMClient.getInstance().chatroomManager().unmuteChatRoomMembers(roomId, list);
+										EMClient.getInstance().chatroomManager().unMuteChatRoomMembers(roomId, list);
 										break;
 									case R.id.menu_item_transfer_owner:
 										EMClient.getInstance().chatroomManager().changeOwner(roomId, operationUserId);
@@ -609,7 +609,7 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 
 			LinearLayout id_background = (LinearLayout) convertView.findViewById(R.id.l_bg_id);
 			if (isInMuteList(username)) {
-				id_background.setBackgroundColor(convertView.getResources().getColor(R.color.holo_green_light));
+				id_background.setBackgroundColor(convertView.getResources().getColor(R.color.gray_normal));
 			} else if (isInBlackList(username)) {
 				id_background.setBackgroundColor(convertView.getResources().getColor(R.color.holo_black));
 			} else {
@@ -691,7 +691,7 @@ public class ChatRoomDetailsActivity extends BaseActivity implements OnClickList
 				@Override
 				public void run() {
 					try {
-						EMClient.getInstance().chatroomManager().destroyChatroom(room.getId());
+						EMClient.getInstance().chatroomManager().destroyChatRoom(room.getId());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

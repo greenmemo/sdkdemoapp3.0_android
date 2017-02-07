@@ -20,7 +20,7 @@
             />
         <LinearLayout
             android:id="@+id/l_bg_id"
-            android:layout_width="match_parent"
+            android:layout_width="50dp"
             android:layout_height="2dp"
             android:orientation="horizontal"
             android:background="@color/holo_red_light"/>

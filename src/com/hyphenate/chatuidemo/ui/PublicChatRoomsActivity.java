@@ -219,19 +219,19 @@ public class PublicChatRoomsActivity extends BaseActivity {
 
 	        // ============================= group_reform new add api begin
 	        @Override
-	        public void onAddMuteList(String chatRoomId, Map<String, Long> mutes) {}
+	        public void onMuteListAdded(String chatRoomId, Map<String, Long> mutes) {}
 
 	        @Override
-	        public void onRemoveMuteList(String chatRoomId, List<String> mutes) {}
+	        public void onMuteListRemoved(String chatRoomId, List<String> mutes) {}
 
 	        @Override
-	        public void onAddAdmin(String chatRoomId, String admin) {}
+	        public void onAdminAdded(String chatRoomId, String admin) {}
 
 	        @Override
-	        public void onRemoveAdmin(String chatRoomId, String admin) {}
+	        public void onAdminRemoved(String chatRoomId, String admin) {}
 
 	        @Override
-	        public void onAssignOwner(String chatRoomId, String newOwner, String oldOwner) {}
+	        public void onOwnerChanged(String chatRoomId, String newOwner, String oldOwner) {}
 	        // ============================= group_reform new add api end
         });
 

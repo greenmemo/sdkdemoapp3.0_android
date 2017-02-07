@@ -257,7 +257,7 @@
     <string name="Version_number_is_wrong">Version number is wrong</string>
     <string name="Are_connected_to_each_other">Connecting to peer..</string>
     <string name="Is_not_yet_connected_to_the_server">Not connect to server</string>
-    <string name="have_connected_with">Connected to the peer and waiting for the peer to accept</string>
+    <string name="have_connected_with">Connected to the peer</string>
     <string name="In_the_call">In the call..</string>
     <string name="The_other_party_refused_to_accept">The call was refused</string>
     <string name="Connection_failure">Connection failed!</string>

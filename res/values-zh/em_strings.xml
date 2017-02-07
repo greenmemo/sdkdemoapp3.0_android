@@ -262,7 +262,7 @@
     <string name="Version_number_is_wrong">版本号错误</string>
     <string name="Are_connected_to_each_other">正在连接对方……</string>
     <string name="Is_not_yet_connected_to_the_server">尚未连接至服务器</string>
-    <string name="have_connected_with">已经和对方建立连接，等待对方接受……</string>
+    <string name="have_connected_with">已经和对方建立连接</string>
     <string name="In_the_call">通话中……</string>
     <string name="The_other_party_refused_to_accept">对方拒绝接受！</string>
     <string name="Connection_failure">连接建立失败！</string>
@@ -293,6 +293,7 @@
     <string name="Delete_the_contact">删除联系人</string>
     <string name="Move_into_the_blacklist_new">移入到黑名单</string>
     <string name="Change_the_group_name">改变群名称</string>
+    <string name="change_the_group_description">改变群描述</string>
     <string name="Sync_Groups_From_Server">从服务器下载群聊信息</string>
     
     <string name="update_contact_list">更新联系人列表</string>

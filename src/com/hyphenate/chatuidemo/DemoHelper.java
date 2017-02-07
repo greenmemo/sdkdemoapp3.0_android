@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Message;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -42,9 +43,9 @@ import com.hyphenate.chatuidemo.ui.VideoCallActivity;
 import com.hyphenate.chatuidemo.ui.VoiceCallActivity;
 import com.hyphenate.chatuidemo.utils.PreferenceManager;
 import com.hyphenate.easeui.controller.EaseUI;
+import com.hyphenate.easeui.controller.EaseUI.EaseEmojiconInfoProvider;
 import com.hyphenate.easeui.controller.EaseUI.EaseSettingsProvider;
 import com.hyphenate.easeui.controller.EaseUI.EaseUserProfileProvider;
-import com.hyphenate.easeui.controller.EaseUI.EaseEmojiconInfoProvider;
 import com.hyphenate.easeui.domain.EaseEmojicon;
 import com.hyphenate.easeui.domain.EaseEmojiconGroupEntity;
 import com.hyphenate.easeui.domain.EaseUser;
@@ -651,23 +652,54 @@ public class DemoHelper {
 
         // ============================= group_reform new add api begin
         @Override
-        public void onAddMuteList(String groupId, final Map<String, Long> mutes) {}
+        public void onMuteListAdded(String groupId, final Map<String, Long> mutes) {
+            StringBuilder sb = new StringBuilder();
+            for (String member : mutes.keySet()) {
+                sb.append(member).append(",");
+            }
+            showToast("onMuterListAdded: " + sb.toString());
+        }
 
 
         @Override
-        public void onRemoveMuteList(String groupId, final List<String> mutes) {}
+        public void onMuteListRemoved(String groupId, final List<String> mutes) {
+            StringBuilder sb = new StringBuilder();
+            for (String member : mutes) {
+                sb.append(member).append(",");
+            }
+            showToast("onMuterListRemoved: " + sb.toString());
+        }
 
 
         @Override
-        public void onAddAdministrator(String groupId, String administrator) {}
+        public void onAdminAdded(String groupId, String administrator) {
+            showToast("onAdminAdded: " + administrator);
+        }
 
         @Override
-        public void onRemoveAdministrator(String groupId, String administrator) {}
+        public void onAdminRemoved(String groupId, String administrator) {
+            showToast("onAdminRemoved: " + administrator);
+        }
 
         @Override
-        public void onChangeOwner(String groupId, String newOwner, String oldOwner) {}
+        public void onOwnerChanged(String groupId, String newOwner, String oldOwner) {
+            showToast("onOwnerChanged: " + newOwner + " oldOwner" + oldOwner);
+        }
         // ============================= group_reform new add api end
     }
+
+    void showToast(final String message) {
+        Message msg = Message.obtain(handler, 0, message);
+        handler.sendMessage(msg);
+    }
+
+    protected android.os.Handler handler = new android.os.Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            String str = (String)msg.obj;
+            Toast.makeText(appContext, str, Toast.LENGTH_LONG).show();
+        }
+    };
     
     /***
      * 好友变化listener
@@ -803,6 +835,7 @@ public class DemoHelper {
 
 			@Override
 			public void onMessageReceived(List<EMMessage> messages) {
+                messages = null;
 			    for (EMMessage message : messages) {
 			        EMLog.d(TAG, "onMessageReceived id : " + message.getMsgId());
 			        // in background, do not refresh UI, notify it in notification bar
@@ -849,7 +882,8 @@ public class DemoHelper {
 			
 			@Override
 			public void onMessageChanged(EMMessage message, Object change) {
-				
+                EMLog.d(TAG, "change:");
+				EMLog.d(TAG, "change:" + change);
 			}
 		};
 		
