@@ -54,8 +54,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.hyphenate.chatuidemo.R.id.menu_item_delete;
-
 public class GroupDetailsActivity extends BaseActivity implements OnClickListener {
 	private static final String TAG = "GroupDetailsActivity";
 	private static final int REQUEST_CODE_ADD_USER = 0;
@@ -105,6 +103,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
         }
         
 		setContentView(R.layout.em_activity_group_details);
+
 		instance = this;
 		st = getResources().getString(R.string.people);
 		RelativeLayout clearAllHistory = (RelativeLayout) findViewById(R.id.clear_all_history);
@@ -164,6 +163,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
         searchLayout.setOnClickListener(this);
 		blockOfflineLayout.setOnClickListener(this);
 	}
+
 
 
 	boolean isCurrentOwner(EMGroup group) {
@@ -414,6 +414,28 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 				userGridview.setAdapter(membersAdapter);
 			}
 		});
+	}
+
+	private void refreshUIVisibility() {
+		((TextView) findViewById(R.id.group_name)).setText(group.getGroupName() + "(" + group.getMemberCount() + st);
+
+		TextView idText = (TextView) findViewById(R.id.tv_group_id_value);
+		RelativeLayout changeGroupNameLayout = (RelativeLayout) findViewById(R.id.rl_change_group_name);
+		RelativeLayout changeGroupDescriptionLayout = (RelativeLayout) findViewById(R.id.rl_change_group_description);
+
+		idText.setText(groupId);
+		if (group.getOwner() == null || "".equals(group.getOwner())
+				|| !group.getOwner().equals(EMClient.getInstance().getCurrentUser())) {
+			exitBtn.setVisibility(View.GONE);
+			deleteBtn.setVisibility(View.GONE);
+			changeGroupNameLayout.setVisibility(View.GONE);
+			changeGroupDescriptionLayout.setVisibility(View.GONE);
+		}
+		// show dismiss button if you are owner of group
+		if (EMClient.getInstance().getCurrentUser().equals(group.getOwner())) {
+			exitBtn.setVisibility(View.GONE);
+			deleteBtn.setVisibility(View.VISIBLE);
+		}
 	}
 
 	/**
@@ -1032,6 +1054,8 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 
 					runOnUiThread(new Runnable() {
 						public void run() {
+							refreshUIVisibility();
+
 							((TextView) findViewById(R.id.group_name)).setText(group.getGroupName() + "(" + group.getMemberCount()
 									+ ")");
 							loadingPB.setVisibility(View.INVISIBLE);

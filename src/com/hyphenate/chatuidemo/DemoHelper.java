@@ -835,7 +835,6 @@ public class DemoHelper {
 
 			@Override
 			public void onMessageReceived(List<EMMessage> messages) {
-                messages = null;
 			    for (EMMessage message : messages) {
 			        EMLog.d(TAG, "onMessageReceived id : " + message.getMsgId());
 			        // in background, do not refresh UI, notify it in notification bar
