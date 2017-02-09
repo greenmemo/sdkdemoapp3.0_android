@@ -71,6 +71,7 @@ public class PublicChatRoomsActivity extends BaseActivity {
     private EditText etSearch;
     private ImageButton ibClean;
     private List<EMChatRoom> rooms;
+	private ChatRoomChangeListener chatRoomChangeListener;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -181,59 +182,11 @@ public class PublicChatRoomsActivity extends BaseActivity {
 			}
 		});
 
+		chatRoomChangeListener = new ChatRoomChangeListener();
+		EMClient.getInstance().chatroomManager().addChatRoomChangeListener(chatRoomChangeListener);
+
         loadAndShowData();
-        
-        EMClient.getInstance().chatroomManager().addChatRoomChangeListener(new EMChatRoomChangeListener(){
-            @Override
-            public void onChatRoomDestroyed(String roomId, String roomName) {
-                chatRoomList.clear();
-                if(adapter != null){
-                    runOnUiThread(new Runnable(){
 
-                        @Override
-                        public void run() {
-                            if(adapter != null){
-                                adapter.notifyDataSetChanged();
-                                loadAndShowData();
-                            }
-                        }
-                        
-                    });
-                }
-            }
-
-            @Override
-            public void onMemberJoined(String roomId, String participant) {                
-            }
-
-            @Override
-            public void onMemberExited(String roomId, String roomName,
-                    String participant) {
-                
-            }
-
-            @Override
-            public void onRemovedFromChatRoom(String roomId, String roomName,
-                                              String participant) {
-            }
-
-	        // ============================= group_reform new add api begin
-	        @Override
-	        public void onMuteListAdded(String chatRoomId, Map<String, Long> mutes) {}
-
-	        @Override
-	        public void onMuteListRemoved(String chatRoomId, List<String> mutes) {}
-
-	        @Override
-	        public void onAdminAdded(String chatRoomId, String admin) {}
-
-	        @Override
-	        public void onAdminRemoved(String chatRoomId, String admin) {}
-
-	        @Override
-	        public void onOwnerChanged(String chatRoomId, String newOwner, String oldOwner) {}
-	        // ============================= group_reform new add api end
-        });
 
         listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -271,7 +224,57 @@ public class PublicChatRoomsActivity extends BaseActivity {
         });
         
 	}
-	
+
+	private class ChatRoomChangeListener implements EMChatRoomChangeListener {
+
+		@Override
+		public void onChatRoomDestroyed(String roomId, String roomName) {
+			chatRoomList.clear();
+			if(adapter != null){
+				runOnUiThread(new Runnable(){
+
+					@Override
+					public void run() {
+						if(adapter != null){
+							loadAndShowData();
+						}
+					}
+
+				});
+			}
+		}
+
+		@Override
+		public void onMemberJoined(String roomId, String participant) {
+		}
+
+		@Override
+		public void onMemberExited(String roomId, String roomName,
+				String participant) {
+
+		}
+
+		@Override
+		public void onRemovedFromChatRoom(String roomId, String roomName,
+				String participant) {
+		}
+
+		@Override
+		public void onMuteListAdded(String chatRoomId, Map<String, Long> mutes) {}
+
+		@Override
+		public void onMuteListRemoved(String chatRoomId, List<String> mutes) {}
+
+		@Override
+		public void onAdminAdded(String chatRoomId, String admin) {}
+
+		@Override
+		public void onAdminRemoved(String chatRoomId, String admin) {}
+
+		@Override
+		public void onOwnerChanged(String chatRoomId, String newOwner, String oldOwner) {}
+	};
+
 	private void loadAndShowData(){
 		new Thread(new Runnable() {
 
@@ -404,5 +407,19 @@ public class PublicChatRoomsActivity extends BaseActivity {
 	
 	public void back(View view){
 		finish();
+	}
+
+	@Override
+	protected void onDestroy() {
+		EMClient.getInstance().chatroomManager().removeChatRoomListener(chatRoomChangeListener);
+		super.onDestroy();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		pagenum = 0;
+		chatRoomList.clear();;
+		loadAndShowData();
 	}
 }

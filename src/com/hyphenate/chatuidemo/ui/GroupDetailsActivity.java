@@ -88,6 +88,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 	private List<String> muteList = Collections.synchronizedList(new ArrayList<String>());
 	private List<String> blackList = Collections.synchronizedList(new ArrayList<String>());
 
+	GroupChangeListener groupChangeListener;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +141,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 		//get push configs
 		pushConfigs = EMClient.getInstance().pushManager().getPushConfigs();
 
-		GroupChangeListener groupChangeListener = new GroupChangeListener();
+		groupChangeListener = new GroupChangeListener();
 		EMClient.getInstance().groupManager().addGroupChangeListener(groupChangeListener);
 		
 		((TextView) findViewById(R.id.group_name)).setText(group.getGroupName() + "(" + group.getMemberCount() + st);
@@ -740,6 +741,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 
 		int ids[] = { R.id.menu_item_add_admin,
 				R.id.menu_item_rm_admin,
+				R.id.menu_item_remove_member,
 				R.id.menu_item_add_to_blacklist,
 				R.id.menu_item_remove_from_blacklist,
 				R.id.menu_item_transfer_owner,
@@ -766,6 +768,9 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 										break;
 									case R.id.menu_item_rm_admin:
 										EMClient.getInstance().groupManager().removeGroupAdmin(groupId, operationUserId);
+										break;
+									case R.id.menu_item_remove_member:
+										EMClient.getInstance().groupManager().removeUserFromGroup(groupId, operationUserId);
 										break;
 									case R.id.menu_item_add_to_blacklist:
 										EMClient.getInstance().groupManager().blockUser(groupId, operationUserId);
@@ -872,11 +877,13 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 					LinearLayout itemAddAdmin = (LinearLayout)dialog.findViewById(R.id.menu_item_add_admin);
 					LinearLayout itemRemoveAdmin = (LinearLayout)dialog.findViewById(R.id.menu_item_rm_admin);
 					LinearLayout itemTransferOwner = (LinearLayout)dialog.findViewById(R.id.menu_item_transfer_owner);
+					LinearLayout itemRemoveMember = (LinearLayout)dialog.findViewById(R.id.menu_item_remove_member);
 					LinearLayout itemAddToBlackList = (LinearLayout) dialog.findViewById(R.id.menu_item_add_to_blacklist);
 					LinearLayout itemRemoveFromBlackList = (LinearLayout) dialog.findViewById(R.id.menu_item_remove_from_blacklist);
 					LinearLayout itemMute = (LinearLayout) dialog.findViewById(R.id.menu_item_mute);
 					LinearLayout itemUnMute = (LinearLayout) dialog.findViewById(R.id.menu_item_unmute);
 
+					itemRemoveMember.setVisibility(View.GONE);
 					if (isAdmin(username)) {
 						itemAddAdmin.setVisibility(View.GONE);
 						itemRemoveAdmin.setVisibility(View.VISIBLE);
@@ -1049,7 +1056,7 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 						memberList.removeAll(muteList);
 
 					} catch (Exception e) {
-						e.printStackTrace();
+						// e.printStackTrace();  // User has no permission for this operation
 					}
 
 					runOnUiThread(new Runnable() {
@@ -1116,8 +1123,10 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 
 	@Override
 	protected void onDestroy() {
+		EMClient.getInstance().groupManager().removeGroupChangeListener(groupChangeListener);
 		super.onDestroy();
 		instance = null;
+
 	}
 	
 	private static class ViewHolder{
@@ -1176,13 +1185,11 @@ public class GroupDetailsActivity extends BaseActivity implements OnClickListene
 		@Override
 		public void onUserRemoved(String groupId, String groupName) {
 			finish();
-			
 		}
 
 		@Override
 		public void onGroupDestroyed(String groupId, String groupName) {
 			finish();
-			
 		}
 
         @Override
